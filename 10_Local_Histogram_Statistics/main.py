@@ -68,6 +68,12 @@ def local_histogram_statistics(some_image, kernel_size, k_0, k_1, k_2, k_3, C):
 
 
 def main():
+    # sample_array = np.uint8([[10, 20, 30, 40, 50],
+    #                          [5, 15, 25, 35, 45],
+    #                          [20, 30, 40, 50, 60],
+    #                          [15, 25, 35, 45, 55],
+    #                          [0, 10, 20, 30, 40]])
+
     image = cv2.imread("Images/embedded_square_noisy.tif", 0)
 
     kernel_size = 3
@@ -77,8 +83,8 @@ def main():
     k_3 = 0.1
     C = 23
 
+    # image_local_histogram_sample = local_histogram_statistics(sample_array, kernel_size, k_0, k_1, k_2, k_3, C)
     image_local_histogram = local_histogram_statistics(image, kernel_size, k_0, k_1, k_2, k_3, C)
-
     hrz_stacked_img = np.hstack((image, image_local_histogram))
 
     plt.imsave("Outputs/local_histogram_statistics_sample.jpg", hrz_stacked_img, cmap="gray")
